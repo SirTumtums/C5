@@ -13,15 +13,18 @@
   saveBtn.on('click', function(){
     console.log($(this)) //this appears to attach itself to button element...
 		// this variable grabs all the siblings/like elements with the description class 
-		var textValue = $(this).siblings('.description').val()
+		let textValue = $(this).siblings('.description').val()
 		console.log(textValue)
 		// this variable selects the parent element of this with corresponding id 
-		var textTime = $(this).parent().attr("id")
+		let textTime = $(this).parent().attr("id")
 		console.log(textTime)
 		localStorage.setItem(textTime, textValue)
 	})
 
   // stores the values saved in textarea to local storage
+$("#hour-5 .description").val(localStorage.getItem("hour-5"))
+$("#hour-3 .description").val(localStorage.getItem("hour-6"))
+$("#hour-4 .description").val(localStorage.getItem("hour-7"))
 $("#hour-8 .description").val(localStorage.getItem("hour-8"))
 $("#hour-9 .description").val(localStorage.getItem("hour-9"))
 $("#hour-10 .description").val(localStorage.getItem("hour-10"))
@@ -29,23 +32,20 @@ $("#hour-11 .description").val(localStorage.getItem("hour-11"))
 $("#hour-12 .description").val(localStorage.getItem("hour-12"))
 $("#hour-1 .description").val(localStorage.getItem("hour-1"))
 $("#hour-2 .description").val(localStorage.getItem("hour-2"))
-$("#hour-3 .description").val(localStorage.getItem("hour-3"))
-$("#hour-4 .description").val(localStorage.getItem("hour-4"))
-$("#hour-5 .description").val(localStorage.getItem("hour-5"))
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
-	var currentTime = dayjs().format('h')
-	var textTime = $(this).parent().attr("id")
-	var schTime = document.querySelectorAll("textarea")
+	let currentTime = dayjs().format('h')
+	let textTime = $(this).parent().attr("id")
+	let schTime = document.querySelectorAll("textarea")
 
   console.log(schTime.length)
 	console.log(currentTime)
 	console.log(schTime)
 //loop to apply past, present, and future classes
-	for (var i = 0; i < schTime.length; i++){
+	for (let i = 0; i < schTime.length; i++){
 		if (schTime[i] === currentTime) {
 			$(schTime).addClass('present');
 	console.log(schTime.i)
@@ -58,5 +58,5 @@ $("#hour-5 .description").val(localStorage.getItem("hour-5"))
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
-  var displayTime = dayjs().format('MMM D, YYYY, hh:mm:ss a' )
+  let displayTime = dayjs().format('MMM D, YYYY, hh:mm:ss a' )
 	$('#currentDay').text(displayTime);
